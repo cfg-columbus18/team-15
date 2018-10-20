@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Label, Menu, Table,Grid,Form,Checkbox,Radio } from 'semantic-ui-react'
+import {
+  Table,
+  Grid,
+  Form,
+  Radio,
+} from 'semantic-ui-react'
 
 export default class SearchContainer extends React.Component {
   constructor(props) {
