@@ -1,5 +1,6 @@
 import React from 'react';
-import { Grid, Header,Menu,Dropdown } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { Grid, Header, Menu, Dropdown } from 'semantic-ui-react';
 
 export default class IndexContainer extends React.Component {
   render() {
@@ -14,7 +15,7 @@ export default class IndexContainer extends React.Component {
     const rightPanel = (
       <Menu.Menu position="right">
         <Menu.Item position="right">Mentor Sign Up</Menu.Item>
-        <Menu.Item position="right">Mentee Sign Up</Menu.Item>
+        <Menu.Item as={ Link } to="/signup/mentee" position="right">Mentee Sign Up</Menu.Item>
       </Menu.Menu>
     );
 
