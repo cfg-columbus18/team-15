@@ -31,7 +31,7 @@ db.createCollection("Mentor", {
                bsonType: "int",
                description: "must be a number and is requried"
             },
-            preferred_platform: {
+            platform: {
                bsonType: "string",
                description: "must be a name"
             },
@@ -43,6 +43,12 @@ db.createCollection("Mentor", {
             expertise: {
                bsonType: "string",
                description: "must be a string"
+            },
+            timezone: {
+               bsonType: "object"
+            },
+            sponsorstage: {
+               bsonType: "string"   
             }
          }
       }
@@ -78,17 +84,16 @@ db.createCollection("Mentee", {
                bsonType: "string",
                description: "must be a name and is required"
             },
-            experience: {
-               bsonType: "int",
-               description: "must be a number and is requried"
-            },
-            preferred_platform: {
+            platform: {
                bsonType: "string",
                description: "must be a name"
             },
             bio: {
                bsonType: "string",
                description: "must be a string"
+            },
+            timezone: {
+               bsonType: "string"
             }
          }
       }
