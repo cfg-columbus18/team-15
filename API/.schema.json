@@ -21,7 +21,6 @@ db.createCollection("Mentor", {
             },
             language: {
                bsonType: "string",
-               minimum: 0,
                description: "must be a string and is required"
             },
             location: {
@@ -73,7 +72,6 @@ db.createCollection("Mentee", {
             },
             language: {
                bsonType: "string",
-               minimum: 0,
                description: "must be a string and is required"
             },
             location: {
