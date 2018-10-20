@@ -4,11 +4,7 @@ db.createCollection("Mentor", {
          bsonType: "object",
          required: [ "fname", "lname", "phone", "email", "language"],
          properties: {
-            fname: {
-               bsonType: "string",
-               description: "Must be characters and is required"
-            },
-            lname: {
+            name: {
                bsonType: "string",
                description: "Must be characters and is required"
             },
@@ -60,11 +56,7 @@ db.createCollection("Mentee", {
          bsonType: "object",
          required: [ "fname", "lname", "phone", "email", "language"],
          properties: {
-            fname: {
-               bsonType: "string",
-               description: "Must be characters and is required"
-            },
-            lname: {
+            name: {
                bsonType: "string",
                description: "Must be characters and is required"
             },
