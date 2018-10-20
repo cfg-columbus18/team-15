@@ -1,4 +1,9 @@
 #!/usr/bin/python
+import apiBoilerplate.py
+
+db = get_db()
+table = getMentorTable(db)
+
 def matching (mentors):
     match_array = []
     mentee_info = {
