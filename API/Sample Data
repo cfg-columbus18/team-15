@@ -1,0 +1,3 @@
+name, country, timezone, experience, phone, language, preferred_platform, sponsorship_stage, expertise, email, bio
+
+INSERT INTO mentor VALUES ( "John Doe", "Canada", "EST", "2 years", "740-123-4567", "english", "twitter", "stage 1", "banking, housing", "jdoe@gmail.com", "I am excited to find a mentee!"), ("Jane Doe", "Canada", "EST", "2 years", "740-123-4567", "english", "twitter", "stage 1", "banking, housing", "jdoe@gmail.com", "I am excited to find a mentee!")
