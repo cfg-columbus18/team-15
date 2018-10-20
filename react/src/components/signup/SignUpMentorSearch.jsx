@@ -16,11 +16,14 @@ export default function SignUpMentorSearch({ profiles, currentSelected, handleCh
         {profile.Country}
       </Table.Cell>
       <Table.Cell>
+        {profile.match_score}
+      </Table.Cell>
+      <Table.Cell>
         <Form.Field>
           <Radio
             value="this"
-            checked={currentSelected === profile.id}
-            onChange={() => { handleChange(profile.id); }}
+            checked={currentSelected === id}
+            onChange={() => { handleChange(id); }}
             label={<label></label>}
           />
         </Form.Field>
@@ -36,6 +39,7 @@ export default function SignUpMentorSearch({ profiles, currentSelected, handleCh
             <Table.HeaderCell>Name</Table.HeaderCell>
             <Table.HeaderCell>Language</Table.HeaderCell>
             <Table.HeaderCell>Location</Table.HeaderCell>
+            <Table.HeaderCell>Match Score</Table.HeaderCell>
             <Table.HeaderCell></Table.HeaderCell>
           </Table.Row>
         </Table.Header>

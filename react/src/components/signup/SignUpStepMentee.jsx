@@ -28,14 +28,14 @@ export default class SignUpStepMentee extends React.Component {
         email: '',
       },
       preferences: {
-        experience: 2,
-        experienceWeight: 5,
-        country: 'CA',
-        countryWeight: 6,
-        timezone: 'EST',
-        timezoneWeight: 7,
-        language: 'english',
-        languageWeight: 3,
+        experience: 0,
+        experienceWeight: 0,
+        country: '',
+        countryWeight: 0,
+        timezone: '',
+        timezoneWeight: 0,
+        language: '',
+        languageWeight: 0,
       },
       profiles: [],
     };
@@ -113,13 +113,21 @@ export default class SignUpStepMentee extends React.Component {
 
   handleSubmit = () => {
     const { preferences } = this.state
+
+    let body = preferences;
+    body.experienceWeight = parseInt(body.experienceWeight, 10);
+    body.countryWeight = parseInt(body.countryWeight, 10);
+    body.languageWeight = parseInt(body.languageWeight, 10);
+    body.timezoneWeight = parseInt(body.timezoneWeight, 10);
+    body = JSON.stringify(body);
+
     fetch('http://localhost:5000', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
       },
-      body: JSON.stringify(preferences),
+      body,
     }).then((response) => {
       if (!response.ok) throw Error(response.statusText);
       return response.json();
@@ -239,6 +247,13 @@ export default class SignUpStepMentee extends React.Component {
             currentSelected={currentMatchSelected}
             handleChange={this.handleMentorSelectedChange}
           />
+          <div style={{ textAlign: 'center' }}>
+            <Button
+              onClick={() => this.handleSubmit()}
+            >
+              Search
+            </Button>
+          </div>
         </div>);
     }
 
