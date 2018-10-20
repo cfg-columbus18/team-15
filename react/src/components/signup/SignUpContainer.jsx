@@ -37,7 +37,7 @@ export default class SignUpContainer extends React.Component {
 
     return (
       <div className="SignUpContainer">
-          <Menu>
+          <Menu style={{backgroundColor: '#21C8CB'}}>
             <Menu.Item as={ Link } to="/" header>Home</Menu.Item>
             <Menu.Item>Q/A</Menu.Item>
             <Menu.Item>Chat</Menu.Item>

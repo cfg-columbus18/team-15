@@ -22,7 +22,7 @@ export default class IndexContainer extends React.Component {
 
     return (
       <div className="IndexContainer">
-        <Menu>
+        <Menu style={{backgroundColor: '#21C8CB'}}>
           {leftPanel}
           {rightPanel}
         </Menu>
@@ -31,6 +31,7 @@ export default class IndexContainer extends React.Component {
           <Grid.Row>
             <Grid.Column></Grid.Column>
             <Grid.Column width={8}>
+
               <Header as="h1" textAlign='center' style={{ textAlign: 'center', marginTop: '50px' }}>
                 <Header.Content>GRSI Mentor Matcher</Header.Content>
               </Header>
@@ -55,6 +56,14 @@ export default class IndexContainer extends React.Component {
                 </Dropdown.Menu>
             </Dropdown>
 
+            </Grid.Column>
+            <Grid.Column></Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column></Grid.Column>
+            <Grid.Column width={8}>
+              <p> Check out this video to see what it means to be a sponsor. </p>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/J5pFTgmYYKg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </Grid.Column>
             <Grid.Column></Grid.Column>
           </Grid.Row>

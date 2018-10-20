@@ -281,11 +281,11 @@ export default class SignUpStepMentee extends React.Component {
         </Step.Group>
         <Segment>
           { form }
-          <Button icon labelPosition="left" primary disabled={step === 0} onClick={() => this.handlePrevious()}>
+          <Button icon labelPosition="left" color="teal" disabled={step === 0} onClick={() => this.handlePrevious()}>
             <Icon name="arrow alternate circle left outline" />
             Previous
           </Button>
-          <Button icon labelPosition="right" floated="right" primary disabled={step === 2} onClick={() => this.handleNext()}>
+          <Button icon labelPosition="right" color="teal" floated="right" disabled={step === 2} onClick={() => this.handleNext()}>
             Next
             <Icon name="arrow alternate circle right outline" />
           </Button>
