@@ -19,13 +19,13 @@ export default class SignUpStepMentee extends React.Component {
     super(props);
 
     this.state = {
-      step: 2,
+      step: 0,
       currentMatchSelected: null,
       contact: {
         name: '',
-        contact: '',
-        platform: '',
         email: '',
+        platform: '',
+        phone: '',
       },
       preferences: {
         experience: 0,
