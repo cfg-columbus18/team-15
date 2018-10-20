@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { List,Table,Grid,Header } from 'semantic-ui-react'
+import {Table,Grid,Header } from 'semantic-ui-react'
 
 
 export default class ProfileContainer extends React.Component {
