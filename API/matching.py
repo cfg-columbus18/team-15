@@ -4,7 +4,9 @@ from apiBoilerplate import getMentorTable
 import mongoengine 
 
 db = get_db()
+test = db.Mentors.find_one({"phone":"5123523195"})
 table = getMentorTable(db)
+print (test)
 
 def matching (mentors):
     match_array = []
