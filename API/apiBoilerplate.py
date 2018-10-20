@@ -12,6 +12,23 @@ import json
 app = Flask(__name__)
 # connects to database
 
+def get_db():
+	db = mysql.connector.connect(host = "localhost",
+					  port = "3306",
+					  user= "root",
+					  passwd = "root",
+					  db = "team15")
+	return db
+
+
+def user_profile(mentor, db):##TODO:change users to correct table.
+	cursor = db.cursor(buffered = True)
+	query = ("SELECT * FROM mentor WHERE name = %(name)s")
+	mentor_data = {
+		'name' : mentor[name]
+		}
+	cursor.execute(query,mentor_data )
+	return cursor
 
 def get_db():
     db = mysql.connector.connect(host="localhost",
@@ -21,6 +38,35 @@ def get_db():
                                  db="team15")
     return db
 
+##queries for mentor table when needed.
+# def getMentorTable(db):
+# 	cursor = db.cursor(buffered = True)
+# 	mentorTable = ("SELECT * FROM mentor")
+# 	cursor.execute(mentorTable)
+#
+# 	return cursor
+#
+# def createMentor(mentor, db):
+# 	cursor = db.cursor(buffered = True)
+# 	mentorInsert =  ("INSERT INTO mentor "
+# 				  "(idmentee, name, country, timezone, experience, phone, language, preferred_platform, sponsorship_stage, expertise, email, bio)"
+# 				 "VALUES (%(name)s, %(country)s, %(timezone)s, %(experience)s, %(phone)s, %(language)s, %(preferred_platform)s, %(sponsorship_stage)s, %(expertise)s, %(email)s, %(bio)s)")
+# 	data_mentor = {
+# 		'name' : mentor[name],
+# 		'country' : mentor[country],
+# 		'timezone' : mentor[timezone],
+# 		'experience' : mentor[experience],
+# 		'phone' : mentor[phone],
+# 		'language' : mentor[language],
+# 		'preferred_platform' : mentor[preferred_platform],
+# 		'sponsorship_stage' : mentor[sponsorship_stage],
+# 		'expertise' : mentor[expertise],
+# 		'email' : mentor[email],
+# 		'bio' : mentor[bio]
+# 		}
+# 	cursor.execute(mentorInsert, data_mentor)
+# 	db.commit()
+# 	cursor.close()
 
 # def user_profile(mentor, db):  # TODO:change users to correct table.
 #     cursor = db.cursor(buffered=True)
