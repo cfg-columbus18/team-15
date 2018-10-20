@@ -6,7 +6,6 @@ import { Header, Grid } from 'semantic-ui-react';
 import SignUpStepMentor from './SignUpStepMentor'
 import SignUpStepMentee from './SignUpStepMentee'
 
-
 export default class SignUpContainer extends React.Component {
   constructor(props) {
     super(props);
