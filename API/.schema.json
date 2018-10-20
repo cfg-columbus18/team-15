@@ -88,7 +88,7 @@ db.createCollection("Mentee", {
                bsonType: "string",
                description: "must be a string"
             },
-            timezone: {
+            timezones: {
                bsonType: "string"
             }
          }
