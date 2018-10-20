@@ -18,15 +18,20 @@ from flask import current_app, g
 from flask.cli import with_appcontext
 from matching import matching
 import json
+import initializer
 
 app = Flask(__name__)
 # connects to database
 
 def get_db():
-	db = mysql.connector.connect(user : "force", 
-							  password = "",
-							  host = "35.175.194.90",
-							  database = "team15")
+	
+	try:
+		db = mysql.connector.connect(user : "force", 
+								  password = "",
+								  host = "35.175.194.90",
+								  database = "team15")
+	except mysql.connector.Error as err:
+		db_init()
 
 	return db
 

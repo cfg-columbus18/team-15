@@ -15,7 +15,7 @@ def create_db():
 	cursor = GRSI.cursor()
 	db = cursor.execute(
             "CREATE DATABASE team15 DEFAULT CHARACTER SET 'utf8'")
-	cursor.execute("USE team15"
+	cursor.execute("USE team15")
 	return GRSI
 
 
@@ -63,7 +63,7 @@ def pop_data(db):
 	mentorInsert = ("INSERT INTO mentor "
                     "(idmentee, name, country, timezone, experience, phone, language, preferred_platform, sponsorship_stage, expertise, email, bio)"
                     "VALUES ('Ashley', 'US', 'EST', 2, '5555555', 'english', 'twitter', 'just arriving', 'housing', 'ash@google.com', 'lorem ipsum')")
-    mentorInsert1 =  ("INSERT INTO mentor "
+	mentorInsert1 =  ("INSERT INTO mentor "
                     "(idmentee, name, country, timezone, experience, phone, language, preferred_platform, sponsorship_stage, expertise, email, bio)"
                     "VALUES ('Brook', 'UK', 'GMT', 2, '112345124', 'french', 'facebook', 'just arriving', 'immigration', 'bklyn@google.com', 'lorem ipsum')")
 	mentorInsert2 = ("INSERT INTO mentor "
