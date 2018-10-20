@@ -1,4 +1,4 @@
-##Aaron Lopez(77%) & Zach Moore(23%)
+##Aaron Lopez(77%) & Zach Moore(23%), 10/20/18
 ##Queries mongoDB searches and returns the data to
 ##node.js for compiling
 ##get_db() connects to configured db and returns it for further manipulation.
@@ -14,8 +14,6 @@
 ##
 import mysql.connector
 from flask import Flask, request, jsonify
-from flask import current_app, g
-from flask.cli import with_appcontext
 from matching import matching
 import json
 from flask_cors import CORS
@@ -30,7 +28,7 @@ def get_db():
                                  db="grsi")
     return db
 
-def getMentorTable(db):
+def getMentorTable(db):#TODO: for less redundancy, implement caching.
     cursor = db.cursor(buffered=True)
     mentorTable = ("SELECT * FROM mentor")
     cursor.execute(mentorTable)
@@ -39,13 +37,14 @@ def getMentorTable(db):
 
 @app.route('/', methods=['POST'])
 def getMentors():
-	db = get_db()  #Get the database
-	mentors = getMentorTable(db) #Get the mentor table
+	db = get_db()
+	mentors = getMentorTable(db)
 	mentee = request.get_json()
 	print(mentee)
 	matches = matching(mentors, mentee)
 	return jsonify(matches), 201
 
+##plans to implement later.
 # def user_profile(mentor, db):
 # 	cursor = db.cursor(buffered = True)
 # 	query = ("SELECT * FROM mentor WHERE name = %(name)s")

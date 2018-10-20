@@ -12,7 +12,7 @@ export default function SignUpContactInformation({ account, handleChange }) {
       </Form.Field>
 
       <Form.Field>
-        <input placeholder="Phone Number" value={account.contact} onChange={(event) => { handleChange('phone', event); }} />
+        <input placeholder="Phone Number" value={account.phone} onChange={(event) => { handleChange('phone', event); }} />
       </Form.Field>
 
       <Form.Field>
