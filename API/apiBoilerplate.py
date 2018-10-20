@@ -1,4 +1,3 @@
-# Aaron Lopez
 # Queries mySQL searches and returns the data to
 # Python Flask for compiling
 # get_db() connects to configured db
