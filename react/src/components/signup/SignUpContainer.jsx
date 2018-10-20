@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-import { Header, Grid } from 'semantic-ui-react';
+import { Header, Grid, Menu } from 'semantic-ui-react';
 
 import SignUpStepMentor from './SignUpStepMentor'
 import SignUpStepMentee from './SignUpStepMentee'
@@ -36,6 +37,11 @@ export default class SignUpContainer extends React.Component {
 
     return (
       <div className="SignUpContainer">
+          <Menu>
+            <Menu.Item as={ Link } to="/" header>Home</Menu.Item>
+            <Menu.Item>Q/A</Menu.Item>
+            <Menu.Item>Chat</Menu.Item>
+          </Menu>
         <Grid columns="equal">
           <Grid.Row>
             <Grid.Column></Grid.Column>
