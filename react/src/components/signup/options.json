@@ -2,29 +2,37 @@
   "experienceOptions": [
     {
       "text": "1",
-      "value": "1"
+      "value": 1
     },
     {
       "text": "2",
-      "value": "2"
+      "value": 2
     },
     {
       "text": "3",
-      "value": "3"
+      "value": 3
+    },
+    {
+      "text": "4",
+      "value": 4
     }
   ],
   "countryOptions": [
     {
-      "text": "Canada",
-      "value": "Canada"
+      "text": "CA",
+      "value": "CA"
     },
     {
-      "text": "United States",
-      "value": "United States"
+      "text": "US",
+      "value": "US"
     },
     {
-      "text": "Spain",
-      "value": "Spain"
+      "text": "BRZ",
+      "value": "BRZ"
+    },
+    {
+      "text": "AUS",
+      "value": "AUS"
     }
   ],
   "timezoneOptions": [
@@ -33,26 +41,26 @@
       "value": "EST"
     },
     {
-      "text": "PST",
-      "value": "PST"
+      "text": "MST",
+      "value": "MST"
     },
     {
-      "text": "CST",
-      "value": "CST"
+      "text": "AMT",
+      "value": "AMT"
     }
   ],
   "languageOptions": [
     {
-      "text": "English",
-      "value": "English"
+      "text": "english",
+      "value": "english"
     },
     {
-      "text": "Spanish",
-      "value": "Spanish"
+      "text": "french",
+      "value": "french"
     },
     {
-      "text": "French",
-      "value": "French"
+      "text": "portugese",
+      "value": "portugese"
     }
   ]
 }
