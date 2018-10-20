@@ -7,7 +7,6 @@
 ##getMentorTable() queries the entire mentor table, and returns the cursor for manipulation.
 ##createMentor() inserts a new entry into the mentors table.
 ##matchMentee() inserts a new entry into the mentee table, using matching.py to manipulate specifically.
-=======
 ##matchMentee() inserts a new entry into the mentee table, used for matching.py to manipulate specifically.
 
 # Aaron Lopez
