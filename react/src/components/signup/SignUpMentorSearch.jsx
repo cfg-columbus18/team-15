@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 import { Form, Radio, Table } from 'semantic-ui-react';
 
 export default function SignUpMentorSearch({ profiles, currentSelected, handleChange }) {
-  const output = profiles.map(profile => (
-    <Table.Row key={profile.id}>
+  const output = profiles.map((profile, id) => (
+    <Table.Row key={id}>
       <Table.Cell>
-        <a href={`/profile/${profile.id}`}>{profile.name}</a>
+        <a href={`/profile/${id}`}>{profile.Name}</a>
       </Table.Cell>
       <Table.Cell>
-        {profile.language}
+        {profile.Language}
       </Table.Cell>
       <Table.Cell>
-        {profile.location}
+        {profile.Country}
       </Table.Cell>
       <Table.Cell>
         <Form.Field>
