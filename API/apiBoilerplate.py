@@ -28,7 +28,7 @@ def user_profile(mentor, db):##TODO:change users to correct table.
 		'name' : mentor[name]
 		}
 	cursor.execute(query,mentor_data )
-	return query
+	return cursor
 
 
 ##queries for mentor table when needed.
@@ -37,7 +37,7 @@ def getMentorTable(db):
 	mentorTable = ("SELECT * FROM mentor")
 	cursor.execute(mentorTable)
 
-	return mentorTable
+	return cursor
 
 def createMentor(mentor, db):
 	cursor = db.cursor(buffered = True)
