@@ -14,10 +14,10 @@ from flask.cli import with_appcontext
 ##connects to database
 
 def get_db():
-	app = Flask(GRSI)
-	app.config["MONGO_URI"] = "mongodb://localhost:27017/GRSI"
-	
-	mongo = PyMongo(app)
+	client = pymongo.MongoClient("mongodb://admin:team15@cluster0-shard-00-00-iuza6.mongodb.net:27017,cluster0-shard-00-01-iuza6.mongodb.net:27017,cluster0-shard-00-02-iuza6.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true")
+	GRSI = client["GRSI"]
+	return GRSI
+		
 
 def close_db():
 	db = g.pop('db', None)
@@ -25,23 +25,25 @@ def close_db():
 		db.close()
 
 @app.route("/user/<mentorusername>")
-def user_profile(mentorusername):##TODO:change users to correct table. 
-    user = mongo.db.mentors.find_one_or_404({"_id": mentorusername})
-    return user
+def user_profile(mentorusername, db):##TODO:change users to correct table.
+	mentors = db["Mentors"]
+	user = db.mentors.find_one_or_404({"_id": mentorusername})
+	return user
 
 ##queries for mentor table when needed.
 @app.route("/recommended", methods = ['GET'])
-def getMentorTable():
-	mentorTable = mongo.db.mentors
+def getMentorTable(db):
+	mentorTable = db["Mentors"]
 	return mentorTables
 
-def createMentor(mentor):
+def createMentor(mentor, db):
+	mentors = db["Mentors"]
 	mentorInsert = {
 		'Name' : mentor[name],
 		'Experience' : mentor[experience],
 		'timezone' : mentor[TZ],
 		'phone' : mentor[contact],
-		'email' : mentor[email]
+		'email' : mentor[email],
 		'location' : mentor[location],
 		'expertise': mentor[expertise],
 		'language' : mentor[language],
@@ -49,9 +51,10 @@ def createMentor(mentor):
 		'sponsorstage' : mentor[sponsorStage],
 		'bio' : mentor[Bio]
 		}	
-	mongo.db.mentors.insert_one(mentorInsert)
+	mentors.insert_one(mentorInsert)
 
-def createMentee(mentee):
+def createMentee(mentee, db):
+	mentees = db["Mentees"]
 	menteeInsert = {
 		'name' : mentee[Name],
 		'experience' : mentee[experience],
@@ -65,4 +68,4 @@ def createMentee(mentee):
 		'sponsorstage' : mentee[sponsorStage],
 		'bio' : mentee[Bio]
 		}
-	mongo.db.mentee.insert_one(menteeInsert)
+	mentee.insert_one(menteeInsert)
