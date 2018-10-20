@@ -61,25 +61,44 @@ def createMentor(mentor, db):
 	db.commit()
 	cursor.close()
 
-def createMentee(mentee, db):
-	cursor = db.cursor(buffered = True)
-	menteeInsert =  ("INSERT INTO mentee "
-				  "(idmentee, name, country, timezone, experience, phone, language, preferred_platform, sponsorship_stage, expertise, email, bio)"
-				 "VALUES (%(name)s, %(country)s, %(timezone)s, %(experience)s, %(phone)s, %(language)s, %(preferred_platform)s, %(sponsorship_stage)s, %(expertise)s, %(email)s, %(bio)s)")
-	data_mentee = {
-		'name' : mentee[name],
-		'country' : mentee[country],
-		'timezone' : mentee[timezone],
-		'experience' : mentee[experience],
-		'phone' : mentee[phone],
-		'language' : mentee[language],
-		'preferred_platform' : mentee[preferred_platform],
-		'sponsorship_stage' : mentee[sponsorship_stage],
-		'expertise' : mentee[expertise],
-		'email' : mentee[email],
-		'bio' : mentee[bio]
-		}
+	@app.route('/')
+	def test():
+		return 'Hello'
 
-	cursor.execute(menteeInsert, data_mentee)
-	db.commit()
-	cursor.close()
+
+	@app.route('/mentor', methods=['POST'])
+
+	def matchMentee():
+		cursor = db.cursor(buffered = True)
+		menteeInsert =  ("INSERT INTO mentee "
+					  "(idmentee, name, country, timezone, experience, phone, language, preferred_platform, sponsorship_stage, expertise, email, bio)"
+					 "VALUES (%(name)s, %(country)s, %(timezone)s, %(experience)s, %(phone)s, %(language)s, %(preferred_platform)s, %(sponsorship_stage)s, %(expertise)s, %(email)s, %(bio)s)")
+		data_mentee = {
+			'name' : mentee[name],
+			'country' : mentee[country],
+			'timezone' : mentee[timezone],
+			'experience' : mentee[experience],
+			'phone' : mentee[phone],
+			'language' : mentee[language],
+			'preferred_platform' : mentee[preferred_platform],
+			'sponsorship_stage' : mentee[sponsorship_stage],
+			'expertise' : mentee[expertise],
+			'email' : mentee[email],
+			'bio' : mentee[bio]
+			}
+		cursor.execute(menteeInsert, data_mentee)
+		db.commit()
+		cursor.close()
+		mentee_test = request.get_json()
+		# mentee_info = {
+		# 	"Country": mentee_test["country"],
+		# 	"Experince": mentee_test["experience"],
+		# 	"Time-Zone": mentee_test["timezone"],
+		# 	"Language": mentee_test["language"],
+		# 	"Country-Weight": mentee_test["country-weight"],
+		# 	"Experience-Weight": mentee_test["experience-weight"],
+		# 	"Language-Weight": mentee_test["language-weight"],
+		# 	"Time-Zone-Weight": mentee_test["timezone-weight"]
+		# }
+		# matching(mentee)
+		return jsonify(mentee_test), 201
