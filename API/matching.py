@@ -2,10 +2,12 @@
 from apiBoilerplate import get_db
 from apiBoilerplate import getMentorTable
 
+#Takes in mentee preference information and compares them to the database of mentors
 def matching (mentee):
-    db = get_db()
-    mentors = getMentorTable(db)
-    match_array = []
+    db = get_db()  #Get the database
+    mentors = getMentorTable(db) #Get the mentor table
+    match_array = [] #initialize match array
+    #Create Dictionary with mentee information from the JSON
     mentee_info = {
         "Experience": mentee['experience'],
         "Country": mentee['country'],
@@ -17,7 +19,9 @@ def matching (mentee):
         "Language-Weight": mentee['languageWeight']
     }
 
+    #For each mentor in the table
     for mentor in mentors:
+        #Create temp dictionary for the mentor
         mentor_info = {
             "Name": mentor[0],
             "Bio": mentor[10],
@@ -33,17 +37,22 @@ def matching (mentee):
             "match_score": 0
         }
 
+        #For each key in the mentor dictionary
         for key in mentor_info:
+            #If the key also exists in the mentee preference dictionary
             if key in mentee_info:
+                #If the preference matches the mentor information
                 if(mentor_info[key] == mentee_info[key]):
+                    #Increment the match score by the assigned weight
                      mentor_info["match_score"] = mentor_info["match_score"] + mentee[key + '-Weight']
 
 
-        match_array.append(mentor_info)
+        match_array.append(mentor_info) #append mentor to the mentors array
 
-    sorted_array = sorted(match_array, key=lambda k: k['match_score'])
-    sorted_array = list(reversed(sorted_array))
-    final_matches = { }
+    sorted_array = sorted(match_array, key=lambda k: k['match_score']) #sort the array by match score
+    sorted_array = list(reversed(sorted_array)) #Reverse the array
+    final_matches = { } #initialize dictionary for return JSOn
+    #Capture top 5 mentors by match_score
     for i in range(0, 5):
         final_matches[i] = sorted_array[i]
     return final_matches

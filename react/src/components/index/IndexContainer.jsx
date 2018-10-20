@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Header, Menu, Dropdown } from 'semantic-ui-react';
+import { Grid, Header, Menu, Dropdown, Flag } from 'semantic-ui-react';
 
 export default class IndexContainer extends React.Component {
   render() {
@@ -46,11 +46,12 @@ export default class IndexContainer extends React.Component {
                 welcome privately sponsored refugees.</p>
 
               <Header as="h4">Select a country below to learn more about the situation in your current country</Header>
+
             <Dropdown text='Select Country'>
                 <Dropdown.Menu>
-                <Dropdown.Item text='Canada' />
-                <Dropdown.Item text='Great Britian'/>
-                <Dropdown.Item text='Germany'/>
+                <Dropdown.Item>Canada <Flag name='ca'> </Flag></Dropdown.Item>
+                <Dropdown.Item>United Kingdom	<Flag name='gb'></Flag> </Dropdown.Item>
+                <Dropdown.Item>Germany	<Flag name='de'></Flag> </Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
 
