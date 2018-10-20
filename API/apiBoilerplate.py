@@ -3,15 +3,13 @@
 ##node.js for compiling
 ##get_db() connects to configured db
 ##
-import pymongo
 import mysql.connector
-from flask import Flask
-from flask_pymongo import PyMongo
-from pymongo import MongoClient
+from flask import Flask, request, jsonify
 from flask import current_app, g
 from flask.cli import with_appcontext
+import json
 
-
+app = Flask(__name__)
 ##connects to database
 
 def get_mysqlDB():
@@ -22,11 +20,8 @@ def get_mysqlDB():
 					  db = "world")
 	curA = db.cursor()
 	query = ("SELECT * FROM city")
-	curA.execute(query)
-	for(name) in curA:
-		print name
-
-get_mysqlDB()
+	cur.execute(query)
+	return cur
 
 def get_db():
 	GSRI = client.GSRI
@@ -63,22 +58,27 @@ def createMentor(mentor, db):
 		'platform' : mentor[platform],
 		'sponsorstage' : mentor[sponsorStage],
 		'bio' : mentor[Bio]
-		}	
+		}
 	mentors.insert_one(mentorInsert)
 
-def createMentee(mentee, db):
-	mentees = db["Mentees"]
-	menteeInsert = {
-		'name' : mentee[Name],
-		'experience' : mentee[experience],
-		'timezone' : mentee[TZ],
-		'phone' : mentee[contact],
-		'email' : mentee[email],
-		'location' : mentee[location],
-		'expertise': mentee[expertise],
-		'language' : mentee[language],
-		'platform' : mentee[platform],
-		'sponsorstage' : mentee[sponsorStage],
-		'bio' : mentee[Bio]
-		}
-	mentee.insert_one(menteeInsert)
+@app.route('/')
+def test():
+	return 'Hello'
+
+
+@app.route('/mentor', methods=['POST'])
+
+def matchMentee():
+	mentee_test = request.get_json()
+	# mentee_info = {
+	# 	"Country": mentee_test["country"],
+	# 	"Experince": mentee_test["experience"],
+	# 	"Time-Zone": mentee_test["timezone"],
+	# 	"Language": mentee_test["language"],
+	# 	"Country-Weight": mentee_test["country-weight"],
+	# 	"Experience-Weight": mentee_test["experience-weight"],
+	# 	"Language-Weight": mentee_test["language-weight"],
+	# 	"Time-Zone-Weight": mentee_test["timezone-weight"]
+	# }
+	# matching(mentee)
+	return jsonify(mentee_test), 201

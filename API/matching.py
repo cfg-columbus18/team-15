@@ -1,12 +1,11 @@
 #!/usr/bin/python
-from apiBoilerplate import get_db
+from apiBoilerplate import get_mysqlDB
 from apiBoilerplate import getMentorTable
-import mongoengine 
 
-db = get_db()
-test = db.Mentors.find_one({"phone":"5123523195"})
-table = getMentorTable(db)
-print (test)
+
+db = get_mysqlDB()
+for info in db:
+    print (info)
 
 def matching (mentors):
     match_array = []
