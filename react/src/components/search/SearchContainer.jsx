@@ -1,16 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Label, Menu, Table,Grid,Form } from 'semantic-ui-react'
+import { Icon, Label, Menu, Table,Grid,Form,Checkbox,Radio } from 'semantic-ui-react'
 
 export default class SearchContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentSelected: -1,
       profiles: [
-        { name: 'Tyler', language: 'English' },
-        { name: 'A', language: 'B' },
+        { name: 'Tyler', language: 'English',location:'USA',id:'1' },
+        { name: 'Ryan', language: 'Spanish',location:'Canada',id:'2' },
       ],
     };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(value) {
+    console.log(value)
+    this.setState({ currentSelected: value });
   }
 
   render() {
@@ -19,12 +27,24 @@ export default class SearchContainer extends React.Component {
 
     const output = profiles.map((profile, index) => (
 
-      <Table.Row key={index}>
+      <Table.Row key={profile.id}>
         <Table.Cell>
           {profile.name}
         </Table.Cell>
         <Table.Cell>
           {profile.language}
+        </Table.Cell>
+        <Table.Cell>
+          {profile.location}
+        </Table.Cell>
+        <Table.Cell>
+          <Form.Field>
+          <Radio
+            value='this'
+            checked={this.state.currentSelected=== profile.id}
+            onChange={() => { this.handleChange(profile.id) }} label={<label></label>}
+            />
+          </Form.Field>
         </Table.Cell>
       </Table.Row>
 
@@ -37,13 +57,11 @@ export default class SearchContainer extends React.Component {
           <Grid.Column width={8}>
             <Form>
               <Form.Group inline>
-
                 <Form.Field>
                   <label>Search</label>
                   <input placeholder="Enter" />
                 </Form.Field>
               </Form.Group>
-
             </Form>
           </Grid.Column>
           <Grid.Column></Grid.Column>
@@ -58,10 +76,16 @@ export default class SearchContainer extends React.Component {
                 <Table.Row>
                   <Table.HeaderCell>Name</Table.HeaderCell>
                   <Table.HeaderCell>Language</Table.HeaderCell>
+                  <Table.HeaderCell>Location</Table.HeaderCell>
+                  <Table.HeaderCell></Table.HeaderCell>
+
                 </Table.Row>
               </Table.Header>
               <Table.Body>
+
+
                 {output}
+
               </Table.Body>
             </Table>
           </Grid.Column>

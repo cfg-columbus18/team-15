@@ -251,5 +251,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 *.json
+!options.json
 .vs/slnx.sqlite
 .vs/team-15/v15/.suo
