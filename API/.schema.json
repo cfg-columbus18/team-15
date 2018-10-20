@@ -9,9 +9,7 @@ db.createCollection("Mentor", {
                description: "Must be characters and is required"
             },
             phone: {
-               bsonType: "int",
-               minimum: 0000000000,
-               maximum: 9999999999,
+               bsonType: "string",
                exclusiveMaximum: true,
                description: "must be a phone number and is required"
             },
@@ -66,9 +64,7 @@ db.createCollection("Mentee", {
                description: "Must be characters and is required"
             },
             phone: {
-               bsonType: "int",
-               minimum: 0000000000,
-               maximum: 9999999999,
+               bsonType: "string",
                exclusiveMaximum: true,
                description: "must be a phone number and is required"
             },
