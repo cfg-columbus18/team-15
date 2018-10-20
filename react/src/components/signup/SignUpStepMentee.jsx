@@ -1,3 +1,8 @@
+/*Ryan Johnston & Tyler Philips, 10/20/18
+ * 
+ * renders mentee's signup and handles submission.
+ * */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 

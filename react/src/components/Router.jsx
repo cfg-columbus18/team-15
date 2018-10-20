@@ -5,7 +5,8 @@ import IndexContainer from './index/IndexContainer';
 import ProfileContainer from './profile/ProfileContainer';
 import SignUpContainer from './signup/SignUpContainer';
 import SearchContainer from './search/SearchContainer';
-
+//Ryan Johnston & Tyler Philips, 10/20/18
+//creates pages to be used for role assignment.
 
 const Router = () => (
   <Switch>

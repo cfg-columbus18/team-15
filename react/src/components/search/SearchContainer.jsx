@@ -1,3 +1,8 @@
+/*Ryan Johnston & Tyler Philips, 10/20/18
+ * searchContainer allows profile searching and handling, changes handle value,  and renders the search page. 
+ * 
+ * */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import {

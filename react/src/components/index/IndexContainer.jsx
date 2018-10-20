@@ -1,3 +1,9 @@
+/*Ryan Johnston & Tyler Philips, 10/20/18
+ * renders the main page.
+ * 
+ * */
+
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Header, Menu, Dropdown, Flag } from 'semantic-ui-react';

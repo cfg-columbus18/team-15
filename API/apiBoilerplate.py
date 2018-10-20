@@ -3,9 +3,18 @@
 ##node.js for compiling
 ##get_db() connects to configured db and returns it for further manipulation.
 ##user_profile() returns a cursor pointing to the database entry of the mentor whose profile page is being called.
+##getMentors() grabs mentors from mentor table and uses matching() against them. 
 ##getMentorTable() queries the entire mentor table, and returns the cursor for manipulation.
 ##createMentor() inserts a new entry into the mentors table.
+##matchMentee() inserts a new entry into the mentee table, using matching.py to manipulate specifically.
+=======
 ##matchMentee() inserts a new entry into the mentee table, used for matching.py to manipulate specifically.
+
+# Aaron Lopez
+# Queries mySQL searches and returns the data to
+# Python Flask for compiling
+# get_db() connects to configured db
+##
 import mysql.connector
 from flask import Flask, request, jsonify
 from matching import matching
@@ -31,8 +40,8 @@ def getMentorTable(db):#TODO: for less redundancy, implement caching.
 
 @app.route('/', methods=['POST'])
 def getMentors():
-	db = get_db()  
-	mentors = getMentorTable(db) 
+	db = get_db()
+	mentors = getMentorTable(db)
 	mentee = request.get_json()
 	print(mentee)
 	matches = matching(mentors, mentee)

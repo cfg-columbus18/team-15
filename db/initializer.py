@@ -1,5 +1,5 @@
 import mysql.connector
-##Aaron Lopez, 10/20 (100%)
+##Aaron Lopez(100%), 10/20/18
 ##SPECIFICALLY ONLY FOR QUICK SETUP OF EXAMPLE DB. DO NOT USE REPEATEDLY.
 ##create_db() will return the db to db_init, who will return it to whoever called it.
 ##create_tables() will create the tables, and if successful will call populate_data()

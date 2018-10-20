@@ -1,3 +1,8 @@
+/*Ryan Johnston & Tyler Philips, 10/20/18
+ * 
+ * signupmentorsearch() maps profile for currently selected profile.
+  * */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 

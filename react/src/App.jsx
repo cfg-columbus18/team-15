@@ -1,3 +1,5 @@
+//Ryan Johnston & Tyler Philips, 10/20/18
+//App constructor.
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
