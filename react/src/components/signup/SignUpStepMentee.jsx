@@ -19,7 +19,7 @@ export default class SignUpStepMentee extends React.Component {
     super(props);
 
     this.state = {
-      step: 0,
+      step: 2,
       currentMatchSelected: null,
       contact: {
         name: '',
@@ -28,19 +28,16 @@ export default class SignUpStepMentee extends React.Component {
         email: '',
       },
       preferences: {
-        experience: null,
-        experienceWeight: 0,
-        country: null,
-        countryWeight: 0,
-        timezone: null,
-        timezoneWeight: 0,
-        language: null,
-        languageWeight: 0,
+        experience: 2,
+        experienceWeight: 5,
+        country: 'CA',
+        countryWeight: 6,
+        timezone: 'EST',
+        timezoneWeight: 7,
+        language: 'english',
+        languageWeight: 3,
       },
-      profiles: [
-        { name: 'Tyler', language: 'English', location: 'USA', id: '1' },
-        { name: 'Ryan', language: 'Spanish', location: 'Canada', id: '2' },
-      ],
+      profiles: [],
     };
   }
 
@@ -112,6 +109,27 @@ export default class SignUpStepMentee extends React.Component {
 
   handleMentorSelectedChange = (value) => {
     this.setState({ currentMatchSelected: value });
+  }
+
+  handleSubmit = () => {
+    const { preferences } = this.state
+    fetch('http://localhost:5000', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify(preferences),
+    }).then((response) => {
+      if (!response.ok) throw Error(response.statusText);
+      return response.json();
+    })
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          profiles: data,
+        })
+      }).catch(error => console.log(error)); // eslint-disable-line no-console
   }
 
   render() {
@@ -199,10 +217,23 @@ export default class SignUpStepMentee extends React.Component {
             <br />
           </Form>
         </div>);
+    } else if (profiles.length === 0) {
+      form = (
+        <div>
+          <p>Search for your mentors</p>
+          <div style={{ textAlign: 'center' }}>
+            <Button
+              onClick={() => this.handleSubmit()}
+            >
+              Search
+            </Button>
+          </div>
+          <br />
+        </div>);
     } else {
       form = (
         <div>
-          <p>Here's the mentors we selected for you:</p>
+          <p>Here are the mentors we selected for you:</p>
           <SignUpMentorSearch
             profiles={profiles}
             currentSelected={currentMatchSelected}
