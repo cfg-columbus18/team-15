@@ -1,3 +1,12 @@
+##Aaron Lopez(77%) & Zach Moore(23%)
+##Queries mongoDB searches and returns the data to
+##node.js for compiling
+##get_db() connects to configured db and returns it for further manipulation.
+##user_profile() returns a cursor pointing to the database entry of the mentor whose profile page is being called.
+##getMentorTable() queries the entire mentor table, and returns the cursor for manipulation.
+##createMentor() inserts a new entry into the mentors table. 
+##matchMentee() inserts a new entry into the mentee table, used for matching.py to manipulate specifically.
+
 # Aaron Lopez
 # Queries mongoDB searches and returns the data to
 # node.js for compiling
@@ -22,11 +31,11 @@ def get_db():
 	return db
 
 
-def user_profile(mentor, db):##TODO:change users to correct table.
+def user_profile(mentor, db):
 	cursor = db.cursor(buffered = True)
 	query = ("SELECT * FROM mentor WHERE name = %(name)s")
 	mentor_data = {
-		'name' : mentor[name]
+		'name' : mentor[0]##TODO: add more entries if needed, change placement array if different, or just a string is a param.
 		}
 	cursor.execute(query,mentor_data )
 	return cursor
