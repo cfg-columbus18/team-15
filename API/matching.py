@@ -35,12 +35,18 @@ def matching (mentors, mentee):
 
         #For each key in the mentor dictionary
         for key in mentor_info:
+            addWeight = false
             #If the key also exists in the mentee preference dictionary
             if key in mentee_info:
                 #If the preference matches the mentor information
-                if(mentor_info[key] == mentee_info[key]):
-                    #Increment the match score by the assigned weight
-                     mentor_info["match_score"] = mentor_info["match_score"] + mentee_info[key + '-Weight']
+                if(key == "Experience"):
+                    if(mentor_info[key] >= mentee_info[key]):
+                        addWeight = true
+                else:
+                    if(mentor_info[key] == mentee_info[key]):
+                        addWeight = true
+                if addWeight:
+                    mentor_info["match_score"] = mentor_info["match_score"] + mentee_info[key + '-Weight'] #Increment the match score by the assigned weight
 
 
         match_array.append(mentor_info) #append mentor to the mentors array
