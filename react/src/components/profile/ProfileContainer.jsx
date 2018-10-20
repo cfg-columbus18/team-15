@@ -1,3 +1,8 @@
+/*Ryan Johnston & Tyler Philips, 10/20/18
+ * 
+ * Renders profile page for example viewing.
+ * 
+ * */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table, Grid, Header } from 'semantic-ui-react'

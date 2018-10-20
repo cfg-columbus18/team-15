@@ -1,3 +1,7 @@
+/*Ryan Johnston & Tyler Philips, 10/20/18
+ * CURRENTLY NOT IN USE.
+ * renders mentor's signup and handles submission.
+ * */
 import React from 'react';
 import PropTypes from 'prop-types';
 

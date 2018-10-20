@@ -3,9 +3,10 @@
 ##node.js for compiling
 ##get_db() connects to configured db and returns it for further manipulation.
 ##user_profile() returns a cursor pointing to the database entry of the mentor whose profile page is being called.
+##getMentors() grabs mentors from mentor table and uses matching() against them. 
 ##getMentorTable() queries the entire mentor table, and returns the cursor for manipulation.
 ##createMentor() inserts a new entry into the mentors table.
-##matchMentee() inserts a new entry into the mentee table, used for matching.py to manipulate specifically.
+##matchMentee() inserts a new entry into the mentee table, using matching.py to manipulate specifically.
 import mysql.connector
 from flask import Flask, request, jsonify
 from matching import matching

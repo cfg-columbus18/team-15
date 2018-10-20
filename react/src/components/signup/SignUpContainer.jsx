@@ -1,3 +1,8 @@
+/*Ryan Johnston & Tyler Philips, 10/20/18
+ * 
+ * componentDidMount() checks 
+ * renders sign up form.
+ * */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';

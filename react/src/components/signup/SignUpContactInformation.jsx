@@ -1,3 +1,7 @@
+/*Ryan Johnston & Tyler Philips, 10/20/18
+ * 
+ * renders contact information input page for future handling.
+ * */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react'

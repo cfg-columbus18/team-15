@@ -1,6 +1,7 @@
 #!/usr/bin/python
-
+##Zach Moore(100%), 10/20/18
 #Takes in mentee preference information and compares them to the database of mentors
+##matching() takes the mentee param and compares it against the mentors parameter, where we apply weight and then check scores.
 def matching (mentors, mentee):
     match_array = [] #initialize match array
     #Create Dictionary with mentee information from the JSON
