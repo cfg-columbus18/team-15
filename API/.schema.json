@@ -4,11 +4,7 @@ db.createCollection("Mentor", {
          bsonType: "object",
          required: [ "fname", "lname", "phone", "email", "language"],
          properties: {
-            fname: {
-               bsonType: "string",
-               description: "Must be characters and is required"
-            },
-            lname: {
+            name: {
                bsonType: "string",
                description: "Must be characters and is required"
             },
@@ -25,12 +21,34 @@ db.createCollection("Mentor", {
             },
             language: {
                bsonType: "string",
-               minimum: 0,
                description: "must be a string and is required"
-            }
+            },
             location: {
                bsonType: "string",
                description: "must be a name and is required"
+            },
+            experience: {
+               bsonType: "int",
+               description: "must be a number and is requried"
+            },
+            platform: {
+               bsonType: "string",
+               description: "must be a name"
+            },
+            bio: {
+               bsonType: "string",
+               description: "must be a string"
+            },
+                    
+            expertise: {
+               bsonType: "string",
+               description: "must be a string"
+            },
+            timezone: {
+               bsonType: "object"
+            },
+            sponsorstage: {
+               bsonType: "string"   
             }
          }
       }
@@ -43,11 +61,7 @@ db.createCollection("Mentee", {
          bsonType: "object",
          required: [ "fname", "lname", "phone", "email", "language"],
          properties: {
-            fname: {
-               bsonType: "string",
-               description: "Must be characters and is required"
-            },
-            lname: {
+            name: {
                bsonType: "string",
                description: "Must be characters and is required"
             },
@@ -63,9 +77,23 @@ db.createCollection("Mentee", {
                description: "must be an email and is not required"
             },
             language: {
-               bsonType: [ "string" ],
-               minimum: 0,
+               bsonType: "string",
                description: "must be a string and is required"
+            },
+            location: {
+               bsonType: "string",
+               description: "must be a name and is required"
+            },
+            platform: {
+               bsonType: "string",
+               description: "must be a name"
+            },
+            bio: {
+               bsonType: "string",
+               description: "must be a string"
+            },
+            timezone: {
+               bsonType: "string"
             }
          }
       }

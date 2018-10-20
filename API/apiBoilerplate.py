@@ -14,9 +14,10 @@ from flask.cli import with_appcontext
 ##connects to database
 
 def get_db():
-	app = Flask(__name__)
-	app.config["MONGO_URI"] = "mongodb://localhost:27017/DATABASENAMEHERE"
-	mongo = PyMongo(app)##TODO: Change Databasename to official one.	
+	app = Flask(GRSI)
+	app.config["MONGO_URI"] = "mongodb://localhost:27017/GRSI"
+	
+	mongo = PyMongo(app)
 
 def close_db():
 	db = g.pop('db', None)
@@ -36,19 +37,32 @@ def getMentorTable():
 
 def createMentor(mentor):
 	mentorInsert = {
-		'name' : mentor[name],
-		'rating' : mentor[rating],
+		'Name' : mentor[name],
+		'Experience' : mentor[experience],
+		'timezone' : mentor[TZ],
+		'phone' : mentor[contact],
+		'email' : mentor[email]
 		'location' : mentor[location],
-		'experience': mentor[experience],
-		'time_zone' : mentor[time_zone]
+		'expertise': mentor[expertise],
+		'language' : mentor[language],
+		'platform' : mentor[platform],
+		'sponsorstage' : mentor[sponsorStage],
+		'bio' : mentor[Bio]
 		}	
 	mongo.db.mentors.insert_one(mentorInsert)
 
 def createMentee(mentee):
 	menteeInsert = {
-		'name' : mentee[name],
+		'name' : mentee[Name],
+		'experience' : mentee[experience],
+		'timezone' : mentee[TZ],
+		'phone' : mentee[contact],
+		'email' : mentee[email],
 		'location' : mentee[location],
-		'time-zone' : mentee[timezone],
-		'language' : mentee[language]
+		'expertise': mentee[expertise],
+		'language' : mentee[language],
+		'platform' : mentee[platform],
+		'sponsorstage' : mentee[sponsorStage],
+		'bio' : mentee[Bio]
 		}
 	mongo.db.mentee.insert_one(menteeInsert)
