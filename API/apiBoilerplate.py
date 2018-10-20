@@ -22,11 +22,11 @@ app = Flask(__name__)
 # connects to database
 
 def get_db():
-	db = mysql.connector.connect(host = "localhost",
-					  port = "3306",
-					  user= "root",
-					  passwd = "root",
-					  db = "team15")
+	db = mysql.connector.connect(user : "force", 
+							  password = "",
+							  host = "35.175.194.90",
+							  database = "team15")
+
 	return db
 
 
