@@ -1,17 +1,13 @@
 #!/usr/bin/python
-from apiBoilerplate import get_db
-from apiBoilerplate import getMentorTable
 
 #Takes in mentee preference information and compares them to the database of mentors
-def matching (mentee):
-    db = get_db()  #Get the database
-    mentors = getMentorTable(db) #Get the mentor table
+def matching (mentors, mentee):
     match_array = [] #initialize match array
     #Create Dictionary with mentee information from the JSON
     mentee_info = {
         "Experience": mentee['experience'],
         "Country": mentee['country'],
-        "TZ": mentees['timezone'],
+        "timezone": mentee['timezone'],
         "Language": mentee['language'],
         "Experience-Weight": mentee['experienceWeight'],
         "Country-Weight": mentee['countryWeight'],
@@ -44,7 +40,7 @@ def matching (mentee):
                 #If the preference matches the mentor information
                 if(mentor_info[key] == mentee_info[key]):
                     #Increment the match score by the assigned weight
-                     mentor_info["match_score"] = mentor_info["match_score"] + mentee[key + '-Weight']
+                     mentor_info["match_score"] = mentor_info["match_score"] + mentee_info[key + '-Weight']
 
 
         match_array.append(mentor_info) #append mentor to the mentors array

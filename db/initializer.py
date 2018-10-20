@@ -87,4 +87,4 @@ def pop_data(db):
 	db.commit()
 	cursor.close()
 
-
+db_init()
