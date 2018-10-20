@@ -1,17 +1,18 @@
 import mysql.connector
+##Aaron Lopez, 10/20 (100%)
+##SPECIFICALLY ONLY FOR QUICK SETUP OF EXAMPLE DB. DO NOT USE REPEATEDLY.
 ##create_db() will return the db to db_init, who will return it to whoever called it.
 ##create_tables() will create the tables, and if successful will call populate_data()
-
+##pop_data() will populate the database.
 def db_init():
 	db = create_db()
 	create_tables(db)
-	populate_data(db)
 	return db
 
 def create_db():
-	GRSI = mysql.connector.connect(user = "force",
-								host = "35.175.194.90",
-								password = "")
+	GRSI = mysql.connector.connect(user = "root",
+								host = "localhost",
+								password = "root")
 	cursor = GRSI.cursor()
 	db = cursor.execute(
             "CREATE DATABASE team15 DEFAULT CHARACTER SET 'utf8'")
@@ -19,11 +20,11 @@ def create_db():
 	return GRSI
 
 
-def create_tables(db):
+def create_tables(db):##we use email for primary key.
 	TABLES = {}
 	TABLES['mentor'] = (
 		"CREATE TABLE `mentor` ("
-		"  `name` varchar(56) NOT NULL AUTO_INCREMENT,"
+		"  `name` varchar(56) NOT NULL,"
 		"  `country` varchar(56) NOT NULL,"
 		"  `timezone` varchar(14) NOT NULL,"
 		"  `experience` varchar(16) NOT NULL,"
@@ -38,7 +39,7 @@ def create_tables(db):
 		") ENGINE=InnoDB")
 
 	TABLES['mentee'] = (
-		"  `name` varchar(56) NOT NULL AUTO_INCREMENT,"
+		"  `name` varchar(56) NOT NULL,"
 		"  `country` varchar(56) NOT NULL,"
 		"  `timezone` varchar(14) NOT NULL,"
 		"  `experience` varchar(16) NOT NULL,"
@@ -58,7 +59,7 @@ def create_tables(db):
 
 	pop_data()
 
-def pop_data(db):
+def pop_data(db):##for faster processing, loop and submit values here.
 	cursor = db.cursor()
 	mentorInsert = ("INSERT INTO mentor "
                     "(idmentee, name, country, timezone, experience, phone, language, preferred_platform, sponsorship_stage, expertise, email, bio)"
