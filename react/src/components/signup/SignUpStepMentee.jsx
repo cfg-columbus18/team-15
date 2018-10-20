@@ -96,7 +96,7 @@ export default class SignUpStepMentee extends React.Component {
     if (step === 0) {
       // Contact segment
       form = <p>Ay.</p>;
-    } else {
+    } else if (step === 1) {
       // Preference segment
       form = (
         <div>
@@ -161,6 +161,8 @@ export default class SignUpStepMentee extends React.Component {
             <br />
           </Form>
         </div>);
+    } else {
+      form = <p> Hello </p>;
     }
 
     return (
