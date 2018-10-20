@@ -4,7 +4,7 @@
 ##get_db() connects to configured db
 ##
 import pymongo
-import MySQLdb
+import mysql.connector
 from flask import Flask
 from flask_pymongo import PyMongo
 from pymongo import MongoClient
@@ -15,20 +15,16 @@ from flask.cli import with_appcontext
 ##connects to database
 
 def get_mysqlDB():
-	db = MySQLdb.connect(host = "localhost",
+	db = mysql.connector.connect(host = "localhost",
 					  port = "3306",
 					  user= "root",
-					  passwd = "",
-					  db = "test")
-	cursor = db.cursor()
-	cusor.execute("SELECT * FROM test")
-	numrows = cursor.rowcount
-
-	for x in range(0, numrows):
-		row = cursor.fetchone()
-		print row[0], "-->", row[1]
-input("ambasda")
-db.close()
+					  passwd = "root",
+					  db = "world")
+	curA = db.cursor()
+	query = ("SELECT * FROM city")
+	curA.execute(query)
+	for(name) in curA:
+		print name
 
 get_mysqlDB()
 
