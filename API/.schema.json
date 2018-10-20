@@ -24,9 +24,13 @@ db.createCollection("Mentor", {
                description: "must be an email and is not required"
             },
             language: {
-               bsonType: [ "string" ],
+               bsonType: "string",
                minimum: 0,
                description: "must be a string and is required"
+            }
+            location: {
+               bsonType: "string",
+               description: "must be a name and is required"
             }
          }
       }
