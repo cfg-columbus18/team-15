@@ -12,11 +12,11 @@ from flask.cli import with_appcontext
 
 
 ##connects to database
+
 def get_db():
 	app = Flask(__name__)
 	app.config["MONGO_URI"] = "mongodb://localhost:27017/DATABASENAMEHERE"
-	mongo = PyMongo(app)##TODO: Change Databasename to official one.
-	
+	mongo = PyMongo(app)##TODO: Change Databasename to official one.	
 
 def close_db():
 	db = g.pop('db', None)
@@ -32,4 +32,23 @@ def user_profile(mentorusername):##TODO:change users to correct table.
 @app.route("/recommended", methods = ['GET'])
 def getMentorTable():
 	mentorTable = mongo.db.mentors
-	return mentorTable
+	return mentorTables
+
+def createMentor(mentor):
+	mentorInsert = {
+		'name' : mentor[name],
+		'rating' : mentor[rating],
+		'location' : mentor[location],
+		'experience': mentor[experience],
+		'time_zone' : mentor[time_zone]
+		}	
+	mongo.db.mentors.insert_one(mentorInsert)
+
+def createMentee(mentee):
+	menteeInsert = {
+		'name' : mentee[name],
+		'location' : mentee[location],
+		'time-zone' : mentee[timezone],
+		'language' : mentee[language]
+		}
+	mongo.db.mentee.insert_one(menteeInsert)
