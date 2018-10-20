@@ -1,0 +1,73 @@
+db.createCollection("Mentor", {
+   validator: {
+      $jsonSchema: {
+         bsonType: "object",
+         required: [ "fname", "lname", "phone", "email", "language"],
+         properties: {
+            fname: {
+               bsonType: "string",
+               description: "Must be characters and is required"
+            },
+            lname: {
+               bsonType: "string",
+               description: "Must be characters and is required"
+            },
+            phone: {
+               bsonType: "int",
+               minimum: 0000000000,
+               maximum: 9999999999,
+               exclusiveMaximum: true,
+               description: "must be a phone number and is required"
+            },
+            email: {
+               bsonType: "string",
+               description: "must be an email and is not required"
+            },
+            language: {
+               bsonType: "string",
+               minimum: 0,
+               description: "must be a string and is required"
+            }
+            location: {
+               bsonType: "string",
+               description: "must be a name and is required"
+            }
+         }
+      }
+   }
+})
+
+db.createCollection("Mentee", {
+   validator: {
+      $jsonSchema: {
+         bsonType: "object",
+         required: [ "fname", "lname", "phone", "email", "language"],
+         properties: {
+            fname: {
+               bsonType: "string",
+               description: "Must be characters and is required"
+            },
+            lname: {
+               bsonType: "string",
+               description: "Must be characters and is required"
+            },
+            phone: {
+               bsonType: "int",
+               minimum: 0000000000,
+               maximum: 9999999999,
+               exclusiveMaximum: true,
+               description: "must be a phone number and is required"
+            },
+            email: {
+               bsonType: "string",
+               description: "must be an email and is not required"
+            },
+            language: {
+               bsonType: [ "string" ],
+               minimum: 0,
+               description: "must be a string and is required"
+            }
+         }
+      }
+   }
+})
