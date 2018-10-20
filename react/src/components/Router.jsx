@@ -10,7 +10,7 @@ import SearchContainer from './search/SearchContainer';
 const Router = () => (
   <Switch>
     <Route exact path="/" component={IndexContainer} />
-    <Route exact path="/profile" component={ProfileContainer} />
+    <Route exact path="/profile/:id" component={ProfileContainer} />
     <Route exact path="/search" component={SearchContainer} />
     <Route exact path="/signup/:role" component={SignUpContainer} />
     {/* <Route component={404} /> */}

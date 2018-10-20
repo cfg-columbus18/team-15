@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Table,Grid,Header } from 'semantic-ui-react'
+import { Table, Grid, Header } from 'semantic-ui-react'
 
 
 export default class ProfileContainer extends React.Component {
@@ -23,25 +23,6 @@ export default class ProfileContainer extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   this.loadData();
-  // }
-  //
-  // loadData() {
-  //   // Call REST API to get form data from database
-  //   fetch(this.props.url, { credentials: 'same-origin' })
-  //     .then((response) => {
-  //       if (!response.ok) throw Error(response.statusText);
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       this.setState({
-  //         profiles: data.profile,
-  //       });
-  //     })
-  //     .catch(error => console.log(error)); // eslint-disable-line no-console
-  // }
-
   render() {
     const { data } = this.state;
 
@@ -52,7 +33,15 @@ export default class ProfileContainer extends React.Component {
         <Grid.Row>
           <Grid.Column></Grid.Column>
           <Grid.Column width={8}>
-            <Header as='h1'>User Information</Header>
+            <Header as="h1" textAlign='center' style={{ textAlign: 'center', marginTop: '50px' }}>
+              <Header.Content>Mentor Profile</Header.Content>
+            </Header>
+          </Grid.Column>
+          <Grid.Column></Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column></Grid.Column>
+          <Grid.Column width={8}>
             <Header as='h3'>Contact Info</Header>
 
             <Table>

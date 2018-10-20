@@ -7,7 +7,7 @@ export default function SignUpMentorSearch({ profiles, currentSelected, handleCh
   const output = profiles.map(profile => (
     <Table.Row key={profile.id}>
       <Table.Cell>
-        {profile.name}
+        <a href={`/profile/${profile.id}`}>{profile.name}</a>
       </Table.Cell>
       <Table.Cell>
         {profile.language}
