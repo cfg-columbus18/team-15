@@ -1,5 +1,7 @@
 #!/usr/bin/python
-import apiBoilerplate.py
+from apiBoilerplate import get_db
+from apiBoilerplate import getMentorTable
+import mongoengine 
 
 db = get_db()
 table = getMentorTable(db)
@@ -43,7 +45,6 @@ def matching (mentors):
     sorted_array = sorted(match_array, key=lambda k: k['match_score'])
     sorted_array = list(reversed(sorted_array))
     final_matches = sorted_array[0:5]
-    print(final_matches)
     return match_array
 
 mentor_one = {

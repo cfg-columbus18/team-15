@@ -4,6 +4,7 @@
 ##get_db() connects to configured db
 ##
 import pymongo
+import MySQLdb
 from flask import Flask
 from flask_pymongo import PyMongo
 from pymongo import MongoClient
@@ -13,28 +14,44 @@ from flask.cli import with_appcontext
 
 ##connects to database
 
+def get_mysqlDB():
+	db = MySQLdb.connect(host = "localhost",
+					  port = "3306",
+					  user= "root",
+					  passwd = "",
+					  db = "test")
+	cursor = db.cursor()
+	cusor.execute("SELECT * FROM test")
+	numrows = cursor.rowcount
+
+	for x in range(0, numrows):
+		row = cursor.fetchone()
+		print row[0], "-->", row[1]
+input("ambasda")
+db.close()
+
+get_mysqlDB()
+
 def get_db():
-	client = pymongo.MongoClient("mongodb://admin:team15@cluster0-shard-00-00-iuza6.mongodb.net:27017,cluster0-shard-00-01-iuza6.mongodb.net:27017,cluster0-shard-00-02-iuza6.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true")
-	GRSI = client["GRSI"]
-	return GRSI
-		
+	GSRI = client.GSRI
+##
+	return GSRI
 
 def close_db():
 	db = g.pop('db', None)
 	if db is not None:
 		db.close()
 
-@app.route("/user/<mentorusername>")
+
 def user_profile(mentorusername, db):##TODO:change users to correct table.
 	mentors = db["Mentors"]
 	user = db.mentors.find_one_or_404({"_id": mentorusername})
 	return user
 
 ##queries for mentor table when needed.
-@app.route("/recommended", methods = ['GET'])
 def getMentorTable(db):
 	mentorTable = db["Mentors"]
-	return mentorTables
+	return mentorTable
 
 def createMentor(mentor, db):
 	mentors = db["Mentors"]
