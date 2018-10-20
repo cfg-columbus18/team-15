@@ -8,8 +8,8 @@
 ##matchMentee() inserts a new entry into the mentee table, used for matching.py to manipulate specifically.
 
 # Aaron Lopez
-# Queries mongoDB searches and returns the data to
-# node.js for compiling
+# Queries mySQL searches and returns the data to
+# Python Flask for compiling
 # get_db() connects to configured db
 ##
 import mysql.connector
