@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ##Aaron Lopez(77%) & Zach Moore(23%)
 ##Queries mongoDB searches and returns the data to
 ##node.js for compiling
@@ -7,13 +6,12 @@
 ##getMentorTable() queries the entire mentor table, and returns the cursor for manipulation.
 ##createMentor() inserts a new entry into the mentors table. 
 ##matchMentee() inserts a new entry into the mentee table, used for matching.py to manipulate specifically.
-=======
+
 # Aaron Lopez
 # Queries mongoDB searches and returns the data to
 # node.js for compiling
 # get_db() connects to configured db
 ##
->>>>>>> 868ea925e09a28ef3a74759facec9f3f9fa013fc
 import mysql.connector
 from flask import Flask, request, jsonify
 from flask import current_app, g
