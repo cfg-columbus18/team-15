@@ -2,22 +2,20 @@
 from apiBoilerplate import get_db
 from apiBoilerplate import getMentorTable
 
-
-db = get_db()
-mentors = getMentorTable(db)
-
-def matching (mentors):
+def matching (mentee):
+    db = get_db()
+    mentors = getMentorTable(db)
     match_array = []
     mentee_info = {
-        "Experience": 8,
-        "Country": "CA",
-        "TZ": "east",
-        "Language": "english",
-        "Platform": "twitter",
-        "Stage": "Arrival",
-        "Expertise": "Housing",
+        "Experience": mentee['experience'],
+        "Country": mentee['country'],
+        "TZ": mentees['timezone'],
+        "Language": mentee['language'],
+        "Experience-Weight": mentee['experienceWeight'],
+        "Country-Weight": mentee['countryWeight'],
+        "timezone-Weight": mentee['timezoneWeight'],
+        "Language-Weight": mentee['languageWeight']
     }
-
 
     for mentor in mentors:
         mentor_info = {
@@ -38,82 +36,14 @@ def matching (mentors):
         for key in mentor_info:
             if key in mentee_info:
                 if(mentor_info[key] == mentee_info[key]):
-                     mentor_info["match_score"] = mentor_info["match_score"] + 1
+                     mentor_info["match_score"] = mentor_info["match_score"] + mentee[key + '-Weight']
 
 
         match_array.append(mentor_info)
 
     sorted_array = sorted(match_array, key=lambda k: k['match_score'])
     sorted_array = list(reversed(sorted_array))
-    final_matches = sorted_array[0:5]
-    print (final_matches)
-    return match_array
-
-mentor_one = {
-    "Name": "Jill",
-    "Bio": "tset",
-    "Experience": 8,
-    "Country": "US",
-    "TZ": "east",
-    "Phone": "859-200",
-    "Language": "Chinese",
-    "Platform": "Twitter",
-    "Stage": "Arrival",
-    "Expertise": "Housing"
-    }
-
-mentor_two = {
-    "Name": "test",
-    "Bio": "test",
-    "Experience": 6,
-    "Country": "west",
-    "TZ": "859-200",
-    "Phone": "859-200",
-    "Language": "English",
-    "Platform": "Snap",
-    "Stage": "Arrival",
-    "Expertise": "None",
-
-    }
-
-mentor_three = {
-    "Name": "test",
-    "Bio": "test",
-    "Experience": "test",
-    "Country": "test",
-    "TZ": "test",
-    "Phone": "test",
-    "Language": "Test",
-    "Platform": "test",
-    "Stage": "test",
-    "Expertise": "test"
-    }
-
-mentor_four = {
-"Name": "test",
-    "Bio": "test",
-    "Experience": "test",
-    "Country": "test",
-    "TZ": "test",
-    "Phone": "test",
-    "Language": "Test",
-    "Platform": "test",
-    "Stage": "test",
-    "Expertise": "test"
-
-    }
-mentor_five = {
-        "Name": "test",
-    "Bio": "test",
-    "Experience": "test",
-    "Country": "test",
-    "TZ": "test",
-    "Phone": "test",
-    "Language": "Test",
-    "Platform": "test",
-    "Stage": "test",
-    "Expertise": "test"
-
-    }
-
-matching(mentors)
+    final_matches = { }
+    for i in range(0, 5):
+        final_matches[i] = sorted_array[i]
+    return final_matches
