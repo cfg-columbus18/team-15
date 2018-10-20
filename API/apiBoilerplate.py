@@ -23,11 +23,13 @@ def close_db():
 	if db is not None:
 		db.close()
 
-@app.route("/user/<username>")
-def user_profile(username):
-    user = mongo.db.users.find_one_or_404({"_id": username})
-    return render_template("user.html",
-        user=user)
+@app.route("/user/<mentorusername>")
+def user_profile(mentorusername):##TODO:change users to correct table. 
+    user = mongo.db.mentors.find_one_or_404({"_id": mentorusername})
+    return user
 
-def add_db():
-
+##queries for mentor table when needed.
+@app.route("/recommended", methods = ['GET'])
+def getMentorTable():
+	mentorTable = mongo.db.mentors
+	return mentorTable
