@@ -10,6 +10,7 @@ import {
   Dropdown,
 } from 'semantic-ui-react';
 
+import SignUpMentorSearch from './SignUpMentorSearch';
 import options from './options.json';
 
 export default class SignUpStepMentee extends React.Component {
@@ -17,7 +18,8 @@ export default class SignUpStepMentee extends React.Component {
     super(props);
 
     this.state = {
-      step: 1,
+      step: 2,
+      currentMatchSelected: null,
       preferences: {
         experience: null,
         experienceWeight: 0,
@@ -28,6 +30,10 @@ export default class SignUpStepMentee extends React.Component {
         language: null,
         languageWeight: 0,
       },
+      profiles: [
+        { name: 'Tyler', language: 'English', location: 'USA', id: '1' },
+        { name: 'Ryan', language: 'Spanish', location: 'Canada', id: '2' },
+      ],
     };
   }
 
@@ -89,13 +95,22 @@ export default class SignUpStepMentee extends React.Component {
     });
   }
 
+  handleMentorSelectedChange = (value) => {
+    this.setState({ currentMatchSelected: value });
+  }
+
   render() {
-    const { step, preferences } = this.state;
+    const {
+      step,
+      preferences,
+      profiles,
+      currentMatchSelected,
+    } = this.state;
 
     let form = null;
     if (step === 0) {
       // Contact segment
-      form = <p>Ay.</p>;
+      form = <p>TODO</p>;
     } else if (step === 1) {
       // Preference segment
       form = (
@@ -162,7 +177,12 @@ export default class SignUpStepMentee extends React.Component {
           </Form>
         </div>);
     } else {
-      form = <p> Hello </p>;
+      form = (
+        <SignUpMentorSearch
+          profiles={profiles}
+          currentSelected={currentMatchSelected}
+          handleChange={this.handleMentorSelectedChange}
+        />);
     }
 
     return (

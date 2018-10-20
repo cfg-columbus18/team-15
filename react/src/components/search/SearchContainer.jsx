@@ -8,8 +8,8 @@ export default class SearchContainer extends React.Component {
     this.state = {
       currentSelected: -1,
       profiles: [
-        { name: 'Tyler', language: 'English',location:'USA',id:'1' },
-        { name: 'Ryan', language: 'Spanish',location:'Canada',id:'2' },
+        { name: 'Tyler', language: 'English', location:'USA', id:'1' },
+        { name: 'Ryan', language: 'Spanish', location:'Canada', id:'2' },
       ],
     };
 
@@ -25,8 +25,7 @@ export default class SearchContainer extends React.Component {
     const { profiles } = this.state;
     // const output = <p>hi</p>
 
-    const output = profiles.map((profile, index) => (
-
+    const output = profiles.map(profile => (
       <Table.Row key={profile.id}>
         <Table.Cell>
           {profile.name}
@@ -39,10 +38,11 @@ export default class SearchContainer extends React.Component {
         </Table.Cell>
         <Table.Cell>
           <Form.Field>
-          <Radio
-            value='this'
-            checked={this.state.currentSelected=== profile.id}
-            onChange={() => { this.handleChange(profile.id) }} label={<label></label>}
+            <Radio
+              value="this"
+              checked={this.state.currentSelected === profile.id}
+              onChange={() => { this.handleChange(profile.id); }}
+              label={<label></label>}
             />
           </Form.Field>
         </Table.Cell>
@@ -66,8 +66,6 @@ export default class SearchContainer extends React.Component {
           </Grid.Column>
           <Grid.Column></Grid.Column>
         </Grid.Row>
-
-
         <Grid.Row>
           <Grid.Column></Grid.Column>
           <Grid.Column width={8}>
@@ -78,14 +76,10 @@ export default class SearchContainer extends React.Component {
                   <Table.HeaderCell>Language</Table.HeaderCell>
                   <Table.HeaderCell>Location</Table.HeaderCell>
                   <Table.HeaderCell></Table.HeaderCell>
-
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-
-
                 {output}
-
               </Table.Body>
             </Table>
           </Grid.Column>
