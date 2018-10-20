@@ -11,6 +11,7 @@ import {
 } from 'semantic-ui-react';
 
 import SignUpMentorSearch from './SignUpMentorSearch';
+import SignUpContactInformation from './SignUpContactInformation';
 import options from './options.json';
 
 export default class SignUpStepMentee extends React.Component {
@@ -18,8 +19,14 @@ export default class SignUpStepMentee extends React.Component {
     super(props);
 
     this.state = {
-      step: 2,
+      step: 0,
       currentMatchSelected: null,
+      contact: {
+        name: '',
+        contact: '',
+        platform: '',
+        email: '',
+      },
       preferences: {
         experience: null,
         experienceWeight: 0,
@@ -81,8 +88,6 @@ export default class SignUpStepMentee extends React.Component {
         preferences,
       });
     }
-
-    console.log(preferences);
   }
 
   handlePriorityChange = (key, event) => {
@@ -92,6 +97,16 @@ export default class SignUpStepMentee extends React.Component {
 
     this.setState({
       preferences,
+    });
+  }
+
+  handleContactChange = (key, event) => {
+    const { contact } = this.state;
+
+    contact[key] = event.target.value;
+
+    this.setState({
+      contact,
     });
   }
 
@@ -105,17 +120,25 @@ export default class SignUpStepMentee extends React.Component {
       preferences,
       profiles,
       currentMatchSelected,
+      contact,
     } = this.state;
 
     let form = null;
     if (step === 0) {
       // Contact segment
-      form = <p>TODO</p>;
+      form = (
+        <div>
+          <p>Tell us how you would like to be contacted by your Mentor.</p>
+          <SignUpContactInformation
+            account={contact}
+            handleChange={this.handleContactChange}
+          />
+        </div>);
     } else if (step === 1) {
       // Preference segment
       form = (
         <div>
-          <p>What attributes would you like your mentor to have? In priority rank from 1-10.</p>
+          <p>What attributes would you like your mentor to have? In priority rank from 1-10 how important it is that your Mentor has that.</p>
           <Form>
             <Form.Group>
               <Form.Field width={13}>
@@ -178,11 +201,14 @@ export default class SignUpStepMentee extends React.Component {
         </div>);
     } else {
       form = (
-        <SignUpMentorSearch
-          profiles={profiles}
-          currentSelected={currentMatchSelected}
-          handleChange={this.handleMentorSelectedChange}
-        />);
+        <div>
+          <p>Here's the mentors we selected for you:</p>
+          <SignUpMentorSearch
+            profiles={profiles}
+            currentSelected={currentMatchSelected}
+            handleChange={this.handleMentorSelectedChange}
+          />
+        </div>);
     }
 
     return (
