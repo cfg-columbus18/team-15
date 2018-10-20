@@ -31,19 +31,19 @@ db.createCollection("Mentor", {
             location: {
                bsonType: "string",
                description: "must be a name and is required"
-            }
+            },
             experience: {
                bsonType: "int",
                description: "must be a number and is requried"
-            }
+            },
             preferred_platform: {
                bsonType: "string",
                description: "must be a name"
-            }
+            },
             bio: {
                bsonType: "string"
                description: "must be a string"
-            }
+            },
                     
             expertise: {
                bsonType: "string",
@@ -80,9 +80,25 @@ db.createCollection("Mentee", {
                description: "must be an email and is not required"
             },
             language: {
-               bsonType: [ "string" ],
+               bsonType: "string",
                minimum: 0,
                description: "must be a string and is required"
+            },
+            location: {
+               bsonType: "string",
+               description: "must be a name and is required"
+            },
+            experience: {
+               bsonType: "int",
+               description: "must be a number and is requried"
+            },
+            preferred_platform: {
+               bsonType: "string",
+               description: "must be a name"
+            },
+            bio: {
+               bsonType: "string",
+               description: "must be a string"
             }
          }
       }
