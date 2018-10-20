@@ -27,7 +27,7 @@ db.createCollection("Mentor", {
                bsonType: "string",
                minimum: 0,
                description: "must be a string and is required"
-            }
+            },
             location: {
                bsonType: "string",
                description: "must be a name and is required"
@@ -41,7 +41,7 @@ db.createCollection("Mentor", {
                description: "must be a name"
             },
             bio: {
-               bsonType: "string"
+               bsonType: "string",
                description: "must be a string"
             },
                     
