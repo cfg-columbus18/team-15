@@ -1,5 +1,5 @@
 ##Aaron Lopez
-##Queries mongoDB searches and returns the data to 
+##Queries mongoDB searches and returns the data to
 ##node.js for compiling
 ##get_db() connects to configured db
 ##
